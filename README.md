@@ -106,3 +106,13 @@ This project demonstrates:
 - Safe arithmetic operations in Solidity
 
 Just like ERC20 is the standard for fungible tokens, **ERC721** is the standard for NFTs (non-fungible tokens), each requiring compliance with their respective set of functions and events.
+
+## Additional note on SafeMath
+
+The SafeMath library validates if an arithmetic operation would result in an integer overflow/underflow. If it would, the library throws an exception, effectively reverting the transaction.
+
+Since Solidity 0.8, the overflow/underflow check is implemented on the language level - it adds the validation to the bytecode during compilation.
+
+You don't need the SafeMath library for Solidity 0.8+. You're still free to use it in this version, it will just perform the same validation twice (one on the language level and one in the library).
+
+And it's strongly recommended to use it in 0.7, since the validation is not performed on the language level in this version yet.
